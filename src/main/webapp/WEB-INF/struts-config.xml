@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+  <!-- Form Beans Configuration -->
+  <form-beans>
+    <form-bean name="searchForm"
+               type="com.test.struts.SearchForm"/>
+  </form-beans>
+
+  <!-- Action Mappings Configuration -->
+  <action-mappings>
+    <action path="/viewSearch"
+         forward="search.page"/>
+
+    <action path="/search"
+            type="com.test.struts.SearchAction"
+            name="searchForm"
+           scope="request"
+        validate="true"
+           input="search.page"/>
+  </action-mappings>
+  
+  <controller processorClass="com.test.struts.CustomRequestProcessor"/>
+ 
+  <!-- Message Resources Configuration -->
+  <message-resources
+    parameter="com.test.struts.MessageResources"/>
+    
+  
+  <!-- Tiles Configuration -->
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config"
+                     value="/WEB-INF/tiles-defs.xml"/>
+  </plug-in>
+ 
+
+
+</struts-config>
